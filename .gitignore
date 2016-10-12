@@ -1,3 +1,7 @@
+# LEADTOOLS license files
+*.key
+*.lic
+
 # Compiled Object files
 *.slo
 *.lo
