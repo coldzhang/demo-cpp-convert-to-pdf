@@ -6,4 +6,4 @@
 
 This example uses LEADTOOLS to convert vector images and documents to PDF files:
 + Convert document to document-based PDF using SVG (no OCR)
-+ Convert vector to vector based PDF using SVG
++ Convert vector to vector-based PDF using SVG
