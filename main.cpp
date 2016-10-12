@@ -8,8 +8,8 @@ int _tmain(int argc, _TCHAR* argv[])
    swprintf_s(ltsupport::szDevKey, (L_MAXPATH) / (sizeof ltsupport::szDevKey[0]), _T("hsxLXslT3JaabQHDQ9E6k4CRXsAZLmwI69383qJp6zProMfYamOe13yYkHr9CmFEPZyXcumaOCTVpLVGo+GVlxgjSaErnxfu"));
   
    // TODO: Also, update the license information in ltsupport.cpp
-   L_TCHAR szSourceDocument[] = _T("D:\\GitHub\\LEADTOOLS\\press-release.doc");
-   L_TCHAR szTargetDocument[] = _T("D:\\GitHub\\LEADTOOLS\\press-release.pdf");
+   L_TCHAR const szSourceDocument[] = _T("D:\\GitHub\\LEADTOOLS\\press-release.doc");
+   L_TCHAR const szTargetDocument[] = _T("D:\\GitHub\\LEADTOOLS\\press-release.pdf");
    
    L_TCHAR const szSourceVector[] = _T("D:\\GitHub\\LEADTOOLS\\random.dxf");
    L_TCHAR const szTargetVector[] = _T("D:\\GitHub\\LEADTOOLS\\random.pdf");
