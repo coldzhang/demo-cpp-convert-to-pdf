@@ -14,12 +14,12 @@ int _tmain(int argc, _TCHAR* argv[])
    L_TCHAR const szSourceVector[] = _T("D:\\GitHub\\LEADTOOLS\\random.dxf");
    L_TCHAR const szTargetVector[] = _T("D:\\GitHub\\LEADTOOLS\\random.pdf");
 
-   if (convert2pdf::ExportDocumentToPdfViaSvg(szSourceDocument, szTargetDocument))
+   if (convert2pdf::ExportFileToPdfViaSvg(szSourceDocument, szTargetDocument))
       std::cout << "Document to PDF: Done" << std::endl;
    else
       std::cout << "Document to PDF: ERROR" << std::endl;
 
-   if (convert2pdf::ExportDocumentToPdfViaSvg(szSourceVector, szTargetVector))
+   if (convert2pdf::ExportFileToPdfViaSvg(szSourceVector, szTargetVector))
       std::cout << "Vector to PDF: Done" << std::endl;
    else
       std::cout << "Vector to PDF: ERROR" << std::endl;

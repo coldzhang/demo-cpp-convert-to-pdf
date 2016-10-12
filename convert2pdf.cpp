@@ -25,41 +25,7 @@ namespace convert2pdf
       }
    }
 
-   // Loads the specified file into memory then saves it to memory as SVG.
-   BOOL LoadVectorAsSvg(const L_TCHAR* sourceFile, L_HANDLE* phSvgFile, L_SIZE_T* pbufferSize)
-   {
-      L_INT nRet;
-      VECTORHANDLE hVectorFile;
-      nRet = L_VecLoadFile((L_TCHAR*)sourceFile, &hVectorFile, NULL, NULL);
-      if (!ltsupport::DisplayError(nRet, _T("L_VecLoadFile")))
-      {
-         nRet = L_VecSaveMemory(phSvgFile, &hVectorFile, FILE_SVG_EMBED_IMAGES, pbufferSize, NULL);
-         L_VecFree(&hVectorFile);
-         if (!ltsupport::DisplayError(nRet, _T("L_VecSaveMemory")))
-            return TRUE;
-      }
-      return FALSE;
-   }
-
-   // Loads the specified file into memory then saves it to memory as SVG.
-   BOOL LoadVectorAsSvg(const L_TCHAR* sourceFile, L_UCHAR** buffer, L_UINT* bufferSize)
-   {
-      L_INT nRet;
-      VECTORHANDLE hVectorFile;
-      nRet = L_VecLoadFile((L_TCHAR*)sourceFile, &hVectorFile, NULL, NULL);
-      if (!ltsupport::DisplayError(nRet, _T("L_VecLoadFile")))
-      {
-         L_HANDLE* phSvgFile = NULL;
-         L_SIZE_T sizeOfFile = 0;
-         nRet = L_VecSaveMemory(phSvgFile, &hVectorFile, FILE_SVG_EMBED_IMAGES, &sizeOfFile, NULL);
-         L_VecFree(&hVectorFile);
-         if (!ltsupport::DisplayError(nRet, _T("L_VecSaveMemory")))
-            return TRUE;
-      }
-      return FALSE;
-   }
-
-   BOOL LoadDocumentAsSvg(const L_TCHAR* sourceFile, L_UCHAR** buffer, L_UINT* bufferSize)
+   BOOL LoadFileAsSvg(const L_TCHAR* sourceFile, L_UCHAR** buffer, L_UINT* bufferSize)
    {
       L_INT nRet = ERROR_FILE_FORMAT;
       L_BOOL canLoad = FALSE;
@@ -84,7 +50,7 @@ namespace convert2pdf
          ltsupport::DisplayError(nRet, _T("L_SvgSaveDocumentMemory"));
 
          // Free the source SVG document
-         L_SvgFreeNode(svgOptions.SvgHandle);
+         nRet = L_SvgFreeNode(svgOptions.SvgHandle);
          ltsupport::DisplayError(nRet, _T("L_SvgFreeNode"));
          svgOptions.SvgHandle = NULL;
 
@@ -128,7 +94,7 @@ namespace convert2pdf
    }
 
 
-   BOOL ExportDocumentToPdfViaSvg(const L_TCHAR* sourceFile, const L_TCHAR* targetFile)
+   BOOL ExportFileToPdfViaSvg(const L_TCHAR* sourceFile, const L_TCHAR* targetFile)
    {
       BOOL bSuccess = FALSE;
       L_UCHAR* buffer = NULL;
@@ -138,7 +104,7 @@ namespace convert2pdf
       if (ltsupport::SetLicense(ltsupport::szLicPath, ltsupport::szDevKey))
       {
          // Load the file into memory as SVG
-         bSuccess = LoadDocumentAsSvg(sourceFile, &buffer, &ubufferSize);
+         bSuccess = LoadFileAsSvg(sourceFile, &buffer, &ubufferSize);
          if (bSuccess)
          {
             SaveAsPdf(targetFile, buffer, ubufferSize);

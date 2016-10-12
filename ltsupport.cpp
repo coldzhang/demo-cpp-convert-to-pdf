@@ -31,9 +31,9 @@ namespace ltsupport
          std::cout << buf << std::endl;
 #endif
          
-         return true;
+         return TRUE;
       }
-      return false;
+      return FALSE;
    }
 
 }
