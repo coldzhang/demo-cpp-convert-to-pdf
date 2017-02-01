@@ -5,7 +5,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
    // TODO: Update with your LEADTOOLS license information.
    swprintf_s(ltsupport::szLicPath, (L_MAXPATH) / (sizeof ltsupport::szLicPath[0]), _T("D:\\GitHub\\LEADTOOLS\\eval-license-files.lic"));
-   swprintf_s(ltsupport::szDevKey, (L_MAXPATH) / (sizeof ltsupport::szDevKey[0]), _T("hsxLXslT3JaabQHDQ9E6k4CRXsAZLmwI69383qJp6zProMfYamOe13yYkHr9CmFEPZyXcumaOCTVpLVGo+GVlxgjSaErnxfu"));
+   swprintf_s(ltsupport::szDevKey, (L_MAXPATH) / (sizeof ltsupport::szDevKey[0]), _T("{YourDeveloperKey}"));
   
    // TODO: Also, update the license information in ltsupport.cpp
    L_TCHAR const szSourceDocument[] = _T("D:\\GitHub\\LEADTOOLS\\press-release.doc");
